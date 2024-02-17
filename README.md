@@ -38,5 +38,13 @@ First time learning Rust 🚀
 <!--- advent_readme_stars table --->
 
 <!--- benchmarking table --->
+## Benchmarks
+
+| Day | Part 1 | Part 2 |
+| :---: | :---: | :---:  |
+| [Day 1](./src/bin/01.rs) | `21.9µs` | `172.3µs` |
+
+**Total: 0.19ms**
+<!--- benchmarking table --->
 
 ---
