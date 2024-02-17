@@ -3,6 +3,7 @@
 # 🎄 Advent of Code {year}
 
 Solutions for [Advent of Code](https://adventofcode.com/) in [Rust](https://www.rust-lang.org/).
+First time learning Rust 🚀
 
 <!--- advent_readme_stars table --->
 
