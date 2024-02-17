@@ -1,4 +1,3 @@
-use std::collections::HashMap;
 advent_of_code::solution!(1);
 
 pub fn part_one(input: &str) -> Option<i32> {
@@ -21,7 +20,7 @@ pub fn part_one(input: &str) -> Option<i32> {
 
 pub fn part_two(input: &str) -> Option<i32> {
     // Replace the spelt out digits with number
-    let mapping = HashMap::from([
+    const MAPPING: [(&str, &str); 9] = [
         ("one", "o1e"),
         ("two", "t2o"),
         ("three", "t3e"),
@@ -31,8 +30,8 @@ pub fn part_two(input: &str) -> Option<i32> {
         ("seven", "s7n"),
         ("eight", "e8t"),
         ("nine", "n9e"),
-    ]);
-    let replaced = mapping
+    ];
+    let replaced = MAPPING
         .iter()
         .fold(input.to_string(), |acc, (old, new)| acc.replace(old, new));
     // After this we have the same problem as part 1
