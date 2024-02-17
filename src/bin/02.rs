@@ -6,6 +6,15 @@ struct Game {
     b: u32,
 }
 
+impl Game {
+    fn product(&self) -> u32 {
+        self.r * self.g * self.b
+    }
+    fn min_viable(&self, r: u32, g: u32, b: u32) -> bool {
+        self.r <= r && self.g <= g && self.b <= b
+    }
+}
+
 fn parse_input(line: &str) -> Option<Game> {
     let mut game = Game { r: 0, g: 0, b: 0 };
     line.split_once(": ")?
@@ -38,7 +47,7 @@ pub fn part_one(input: &str) -> Option<usize> {
         .enumerate()
         .filter_map(|(i, line)| {
             parse_input(line).and_then(|game| {
-                if game.r <= 12 && game.g <= 13 && game.b <= 14 {
+                if game.min_viable(12, 13, 14) {
                     Some(i + 1)
                 } else {
                     None
@@ -52,7 +61,7 @@ pub fn part_one(input: &str) -> Option<usize> {
 pub fn part_two(input: &str) -> Option<u32> {
     let result = input
         .lines()
-        .filter_map(|line| parse_input(line).map(|game| game.r * game.g * game.b))
+        .filter_map(|line| parse_input(line).map(|game| game.product()))
         .sum();
     Some(result)
 }
