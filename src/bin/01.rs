@@ -18,19 +18,19 @@ pub fn part_one(input: &str) -> Option<i32> {
     Some(result)
 }
 
+const MAPPING: [(&str, &str); 9] = [
+    ("one", "o1e"),
+    ("two", "t2o"),
+    ("three", "t3e"),
+    ("four", "f4r"),
+    ("five", "f5e"),
+    ("six", "s6x"),
+    ("seven", "s7n"),
+    ("eight", "e8t"),
+    ("nine", "n9e"),
+];
 pub fn part_two(input: &str) -> Option<i32> {
     // Replace the spelt out digits with number
-    const MAPPING: [(&str, &str); 9] = [
-        ("one", "o1e"),
-        ("two", "t2o"),
-        ("three", "t3e"),
-        ("four", "f4r"),
-        ("five", "f5e"),
-        ("six", "s6x"),
-        ("seven", "s7n"),
-        ("eight", "e8t"),
-        ("nine", "n9e"),
-    ];
     let replaced = MAPPING
         .iter()
         .fold(input.to_string(), |acc, (old, new)| acc.replace(old, new));
