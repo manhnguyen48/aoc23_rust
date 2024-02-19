@@ -35,7 +35,7 @@ pub fn part_two(input: &str) -> Option<i32> {
         .iter()
         .fold(input.to_string(), |acc, (old, new)| acc.replace(old, new));
     // After this we have the same problem as part 1
-    part_one(&replaced)
+    part_one(replaced)
 }
 
 #[cfg(test)]
