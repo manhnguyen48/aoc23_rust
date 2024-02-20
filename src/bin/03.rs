@@ -14,7 +14,7 @@ fn look_around(lines: &[&[u8]], i: usize, j: usize) -> Option<Vec<(usize, usize)
             let line = &lines[di];
             // If the surrounding tile has a digit then we start traversing to find the begining of the digit sequence.
             if line[start_j].is_ascii_digit() {
-                while &start_j > &0
+                while start_j > 0
                     && line[&start_j - 1].is_ascii_digit()
                     && line[dj].is_ascii_digit()
                 {

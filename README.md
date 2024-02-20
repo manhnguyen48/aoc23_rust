@@ -45,9 +45,9 @@ First time learning Rust 🚀
 | [Day 1](./src/bin/01.rs) | `20.2µs` | `149.3µs` |
 | [Day 2](./src/bin/02.rs) | `27.2µs` | `27.8µs` |
 | [Day 3](./src/bin/03.rs) | `62.5µs` | `34.8µs` |
-| [Day 4](./src/bin/04.rs) | `133.4µs` | `19.0ns` |
+| [Day 4](./src/bin/04.rs) | `41.1µs` | `41.9µs` |
 
-**Total: 0.46ms**
+**Total: 0.40ms**
 <!--- benchmarking table --->
 
 ---
