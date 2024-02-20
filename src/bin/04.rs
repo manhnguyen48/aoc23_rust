@@ -1,58 +1,41 @@
 advent_of_code::solution!(4);
 
-struct Card {
-    // id: u32,
-    winners: Vec<u32>,
-    players: Vec<u32>,
-}
-impl Card {
-    fn new(card_input: Vec<&str>) -> Self {
-        // let id = card_input[0].replace("Card ", "").parse::<u32>().unwrap();
-        let winners = card_input[1]
-            .split(" ")
-            .filter_map(|number| number.parse::<u32>().ok())
-            .collect::<Vec<u32>>();
-        let players = card_input[2]
-            .split(" ")
-            .filter_map(|number| number.parse::<u32>().ok())
-            .collect::<Vec<u32>>();
+fn parse_unsigned(input_string: &str) -> Vec<usize> {
+    let (mut result, num) =
+        input_string
+            .bytes()
+            .fold((Vec::new(), 0), |(mut result, mut num), b| {
+                if b.is_ascii_digit() {
+                    num = num * 10 + (b - b'0') as usize;
+                } else if num > 0 {
+                    result.push(num);
+                    num = 0;
+                }
+                (result, num)
+            });
 
-        Card {
-            // id,
-            winners,
-            players,
-        }
-    }
-    fn count_matches(&self) -> u32 {
-        self.players
-            .iter()
-            .filter(|&p| self.winners.contains(p))
-            .count() as u32
-    }
+    result.push(num);
+    result
 }
 
 pub fn part_one(input: &str) -> Option<u32> {
-    let result = input
+    let matches = input
         .lines()
-        .filter_map(|l| {
-            let card_input = l
-                .split(&[':', '|'])
-                .map(|part| part.trim())
-                .collect::<Vec<&str>>();
-            let card = Card::new(card_input);
-            let matches: u32 = card.count_matches();
-            // Check if count_matches returns 0 to avoid overflow
-            if matches > 0 {
-                Some(u32::pow(2, matches - 1))
-            } else {
-                None
-            }
+        .map(|line| {
+            let (w, p) = line.split_once("|").expect("Invalid input");
+            let winners = parse_unsigned(&w);
+            let players = parse_unsigned(&p);
+            // All numbers are 2 digits so we can use a bool array to store the matches.
+            let mut match_count = [false; 100];
+            winners.iter().skip(1).for_each(|i| match_count[*i] = true);
+            players.iter().filter(|&i| match_count[*i]).count()
         })
-        .sum();
-    Some(result)
+        .collect::<Vec<usize>>();
+    // Bit shifting here 1 << n means 2^n, so we need to divide by 2 to get the correct result.
+    Some(matches.iter().map(|&n| (1 << n) >> 1).sum())
 }
 
-pub fn part_two(input: &str) -> Option<u32> {
+pub fn part_two(_input: &str) -> Option<u32> {
     Some(30)
 }
 
