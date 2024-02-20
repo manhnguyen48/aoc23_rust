@@ -1,9 +1,10 @@
 <img src="./.assets/christmas_ferris.png" width="164">
 
-# 🎄 Advent of Code {year}
+# 🎄 Advent of Code {2023}
 
 Solutions for [Advent of Code](https://adventofcode.com/) in [Rust](https://www.rust-lang.org/).
-First time learning Rust 🚀
+
+First time learning Rust 🦀, so the code is probably not idiomatic.
 
 <table>
 <tr><th>2023 Results</th><th>Benchmarks</th></tr> 
@@ -52,4 +53,4 @@ First time learning Rust 🚀
 <!--- benchmarking table --->
 </td></tr>
 </table>
----
+
