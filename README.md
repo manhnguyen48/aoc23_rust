@@ -6,9 +6,9 @@ Solutions for [Advent of Code](https://adventofcode.com/) in [Rust](https://www.
 First time learning Rust 🚀
 
 <table>
-<tr><td>
+<tr><th>2023 Results</th><th>Benchmarks</th></tr> 
+<tr valign = "top"><td>
 <!--- advent_readme_stars table --->
-## 2023 Results
 
 | Day | Part 1 | Part 2 |
 | :---: | :---: | :---: |
@@ -40,7 +40,6 @@ First time learning Rust 🚀
 <!--- advent_readme_stars table --->
 </td><td>
 <!--- benchmarking table --->
-## Benchmarks
 
 | Day | Part 1 | Part 2 |
 | :---: | :---: | :---:  |
