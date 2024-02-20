@@ -14,7 +14,9 @@ fn parse_unsigned(input_string: &str) -> Vec<usize> {
                 (result, num)
             });
 
-    result.push(num);
+    if num > 0 {
+        result.push(num);
+    }
     result
 }
 
