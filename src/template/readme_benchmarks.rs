@@ -1,6 +1,6 @@
 /// Module that updates the readme me with timing information.
 /// The approach taken is similar to how `aoc-readme-stars` handles this.
-use std::{ fs, io };
+use std::{fs, io};
 
 use crate::template::timings::Timings;
 use crate::template::Day;
@@ -33,7 +33,9 @@ fn locate_table(readme: &str) -> Result<TablePosition, Error> {
     let matches: Vec<_> = readme.match_indices(MARKER).collect();
 
     if matches.len() > 2 {
-        return Err(Error::Parser("{}: too many occurences of marker in README.".into()));
+        return Err(Error::Parser(
+            "{}: too many occurences of marker in README.".into(),
+        ));
     }
 
     let pos_start = matches
@@ -49,25 +51,26 @@ fn locate_table(readme: &str) -> Result<TablePosition, Error> {
     Ok(TablePosition { pos_start, pos_end })
 }
 
-fn construct_table(timings: Timings, total_millis: f64) -> String {
+fn construct_table(prefix: &str, timings: Timings, total_millis: f64) -> String {
+    let header = format!("{prefix} Benchmarks");
+
     let mut lines: Vec<String> = vec![
         MARKER.into(),
+        header,
         String::new(),
         "| Day | Part 1 | Part 2 |".into(),
-        "| :---: | :---: | :---:  |".into()
+        "| :---: | :---: | :---:  |".into(),
     ];
 
     for timing in timings.data {
         let path = get_path_for_bin(timing.day);
-        lines.push(
-            format!(
-                "| [Day {}]({}) | `{}` | `{}` |",
-                timing.day.into_inner(),
-                path,
-                timing.part_1.unwrap_or_else(|| "-".into()),
-                timing.part_2.unwrap_or_else(|| "-".into())
-            )
-        );
+        lines.push(format!(
+            "| [Day {}]({}) | `{}` | `{}` |",
+            timing.day.into_inner(),
+            path,
+            timing.part_1.unwrap_or_else(|| "-".into()),
+            timing.part_2.unwrap_or_else(|| "-".into())
+        ));
     }
 
     lines.push(String::new());
@@ -79,7 +82,7 @@ fn construct_table(timings: Timings, total_millis: f64) -> String {
 
 fn update_content(s: &mut String, timings: Timings, total_millis: f64) -> Result<(), Error> {
     let positions = locate_table(s)?;
-    let table = construct_table(timings, total_millis);
+    let table = construct_table("##", timings, total_millis);
     s.replace_range(positions.pos_start..positions.pos_end, &table);
     Ok(())
 }
@@ -95,8 +98,8 @@ pub fn update(timings: Timings) -> Result<(), Error> {
 
 #[cfg(feature = "test_lib")]
 mod tests {
-    use super::{ update_content, MARKER };
-    use crate::{ day, template::timings::Timing, template::timings::Timings };
+    use super::{update_content, MARKER};
+    use crate::{day, template::timings::Timing, template::timings::Timings};
 
     fn get_mock_timings() -> Timings {
         Timings {
@@ -105,20 +108,20 @@ mod tests {
                     day: day!(1),
                     part_1: Some("10ms".into()),
                     part_2: Some("20ms".into()),
-                    total_nanos: 3e10,
+                    total_nanos: 3e+10,
                 },
                 Timing {
                     day: day!(2),
                     part_1: Some("30ms".into()),
                     part_2: Some("40ms".into()),
-                    total_nanos: 7e10,
+                    total_nanos: 7e+10,
                 },
                 Timing {
                     day: day!(4),
                     part_1: Some("40ms".into()),
                     part_2: Some("50ms".into()),
-                    total_nanos: 9e10,
-                }
+                    total_nanos: 9e+10,
+                },
             ],
         }
     }
@@ -172,7 +175,8 @@ mod tests {
             "**Total: 190.00ms**",
             "<!--- benchmarking table --->",
             "baz",
-        ].join("\n");
+        ]
+        .join("\n");
         assert_eq!(s, expected);
     }
 }
