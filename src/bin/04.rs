@@ -1,25 +1,5 @@
 advent_of_code::solution!(4);
-
-// Parses a vector of integers from a string.
-//
-// Splits the string on non-digit bytes, converting digit chunks to numbers.
-// Accumulates the numbers into a vector and return it. Somehow for loops are faster than iterators on AMD compared to Intel.
-fn parse_unsigned(input_string: &str) -> Vec<usize> {
-    let mut result = Vec::new();
-    let mut num = 0;
-    for b in input_string.bytes() {
-        if b.is_ascii_digit() {
-            num = num * 10 + ((b - b'0') as usize);
-        } else if num != 0 {
-            result.push(num);
-            num = 0;
-        }
-    }
-    if num != 0 {
-        result.push(num);
-    }
-    result
-}
+use advent_of_code::parse_unsigned;
 
 // Parses input containing winners and players on each line, counting how
 // many players have winning numbers.
