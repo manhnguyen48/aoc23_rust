@@ -18,12 +18,7 @@ fn solve(times: &[f64], max_scores: &[f64]) -> f64 {
 pub fn part_one(input: &str) -> Option<u32> {
     let parsed_input = input
         .lines()
-        .map(|line|
-            parse_unsigned(line)
-                .iter()
-                .map(|&n| n as f64)
-                .collect()
-        )
+        .map(|line| parse_unsigned(line).iter().map(|&n| n as f64).collect())
         .collect::<Vec<Vec<f64>>>();
 
     Some(solve(&parsed_input[0], &parsed_input[1]) as u32)
