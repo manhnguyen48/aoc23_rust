@@ -46,13 +46,13 @@ First time learning Rust 🦀, so the code is probably not idiomatic.
 
 | Day | Part 1 | Part 2 |
 | :---: | :---: | :---:  |
-| [Day 1](./src/bin/01.rs) | `31.5µs` | `204.4µs` |
-| [Day 2](./src/bin/02.rs) | `26.0µs` | `25.9µs` |
-| [Day 3](./src/bin/03.rs) | `76.9µs` | `37.1µs` |
-| [Day 4](./src/bin/04.rs) | `47.9µs` | `48.4µs` |
-| [Day 5](./src/bin/05.rs) | `17.0µs` | `12.0ns` |
+| [Day 1](./src/bin/01.rs) | `20.2µs` | `149.3µs` |
+| [Day 2](./src/bin/02.rs) | `27.2µs` | `27.8µs` |
+| [Day 3](./src/bin/03.rs) | `62.5µs` | `34.8µs` |
+| [Day 4](./src/bin/04.rs) | `41.3µs` | `41.8µs` |
+| [Day 5](./src/bin/05.rs) | `17.1µs` | `18.0ns` |
 
-**Total: 0.52ms**
+**Total: 0.42ms**
 <!--- benchmarking table --->
 </td></tr>
 </table>
