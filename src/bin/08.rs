@@ -40,7 +40,7 @@ pub fn part_one(input: &str) -> Option<usize> {
     // Since we might take more than 1 loop through the set of instruction to find ZZZ,
     // We need to take the LCM of the number of steps it takes to get to ZZZ and
     // the number of instructions
-    Some(lcm(&vec![instructions.len(), step_counts]))
+    Some(lcm(&[instructions.len(), step_counts]))
 }
 
 pub fn part_two(input: &str) -> Option<usize> {
@@ -50,7 +50,7 @@ pub fn part_two(input: &str) -> Option<usize> {
     let mut queue: VecDeque<(&str, usize)> = VecDeque::new();
     let mut visited: HashSet<&str> = HashSet::new();
     // Vector to store the cycle lengths for each ghost to see Z node again
-    let mut cycle_lengths: Vec<usize> = vec![];
+    let mut cycle_lengths: Vec<usize> = Vec::new();
     // There are 6 nodes ending with A and we're going through each of them
     // We're using BFS to search through the nodes until we end up in node ending with Z
     // Recording how many steps it took to get there
