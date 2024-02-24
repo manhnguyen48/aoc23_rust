@@ -1,12 +1,13 @@
 advent_of_code::solution!(7);
 
-fn classify_hand(card_ranks: &Vec<usize>) -> usize {
+fn classify_hand(card_ranks: &[usize]) -> usize {
     // We're using an array length 15 to store frequencies of card ranks.
     let mut freq = [0; 15];
     card_ranks.iter().for_each(|&c| {
         freq[c] += 1;
     });
-    // Turning off the count of jokers in case its value is 1
+    // Turning off the count of jokers in the case its value is 1; in other cases this
+    // value will be 0 any way.
     let jokers = freq[1];
     freq[1] = 0;
     freq.sort_unstable_by(|&a, &b| b.cmp(&a));
@@ -36,7 +37,7 @@ fn parse_hand(hand: &str, j_value: usize) -> usize {
         .collect();
     // Get hand rank first
     let mut hand_value = classify_hand(&card_ranks);
-    // Continue to bit shift to encode the rank info into the hand value
+    // Continue to bit shift to encode the rank info of the cards into the hand value
     for r in card_ranks {
         hand_value = (hand_value << 4) | r;
     }
