@@ -14,9 +14,11 @@ fn classify_hand(card_ranks: &[usize]) -> usize {
     // Jokers will always become whichever card is highest in frequency
     freq[0] += jokers;
 
-    // Encoding the hand type as an integer by looking at the top 5 rank frequencies
+    // Encoding the hand type as an integer by looking at the top 2 rank frequencies
+    // and bit shifting them into the hand type.
+    // Only the top 2 make the difference in hand type
     let mut hand_type = 0;
-    for f in freq.iter().take(5) {
+    for f in freq.iter().take(2) {
         hand_type = (hand_type << 4) | f;
     }
     hand_type
