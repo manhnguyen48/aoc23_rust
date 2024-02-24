@@ -37,8 +37,7 @@ pub fn part_one(input: &str) -> Option<usize> {
             queue.push_back((right, steps + 1));
         }
     }
-    // Since we might take more than 1 loop through the set of instruction to find ZZZ,
-    // We need to take the LCM of the number of steps it takes to get to ZZZ and
+    // Since we might find ZZZ early we need to take the LCM of the number of steps and
     // the number of instructions
     Some(lcm(&[instructions.len(), step_counts]))
 }
