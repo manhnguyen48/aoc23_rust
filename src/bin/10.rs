@@ -23,7 +23,7 @@ fn shoelace(coordinates: Vec<(i32, i32)>) -> u32 {
 
 pub fn part_one(input: &str) -> Option<u32> {
     let grid = Matrix::parse(input);
-    let tile = grid.find_item(b'S')?;
+    let tile = grid.find_one(b'S')?;
 
     // Finding the appropriate first step, we either can go up or down
     let mut direction = match grid.in_bounds(&(tile + N)) {
@@ -64,7 +64,7 @@ pub fn part_one(input: &str) -> Option<u32> {
 // of polygon perimeter then calculate the area inside
 pub fn part_two(input: &str) -> Option<u32> {
     let grid = Matrix::parse(input);
-    let tile = grid.find_item(b'S')?;
+    let tile = grid.find_one(b'S')?;
     let mut traversal_order: Vec<(i32, i32)> = Vec::new();
     traversal_order.push((tile.x, tile.y));
 

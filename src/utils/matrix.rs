@@ -96,11 +96,28 @@ impl Matrix<u8> {
 
     /// Searches the matrix for the given `item` and returns the `Point` location if found.
     /// Returns `None` if the item is not found in the matrix.
-    pub fn find_item(&self, item: u8) -> Option<Point> {
-        self.contents.iter().position(|&b| b == item).map(|idx| {
-            let x = (idx as i32) % self.width;
-            let y = (idx as i32) / self.width;
-            Point::new(x, y)
-        })
+    pub fn find_one(&self, item: u8) -> Option<Point> {
+        self.contents
+            .iter()
+            .position(|&b| b == item)
+            .map(|idx| Point::new((idx as i32) % self.width, (idx as i32) / self.width))
+    }
+    /// Searches the matrix for the given `item` and returns the all the locations if found.
+    /// Returns an empty vector if the item is not found in the matrix.
+    pub fn find_all(&self, item: u8) -> Vec<Point> {
+        self.contents
+            .iter()
+            .enumerate()
+            .filter_map(|(idx, &b)| {
+                if b == item {
+                    Some(Point::new(
+                        (idx as i32) % self.width,
+                        (idx as i32) / self.width,
+                    ))
+                } else {
+                    None
+                }
+            })
+            .collect()
     }
 }
