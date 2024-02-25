@@ -55,8 +55,9 @@ First time learning Rust 🦀, so the code is probably not idiomatic.
 | [Day 7](./src/bin/07.rs) | `102.5µs` | `98.3µs` |
 | [Day 8](./src/bin/08.rs) | `22.2µs` | `41.7µs` |
 | [Day 9](./src/bin/09.rs) | `82.4µs` | `82.3µs` |
+| [Day 10](./src/bin/10.rs) | `57.7µs` | `64.5µs` |
 
-**Total: 0.89ms**
+**Total: 1.01ms**
 <!--- benchmarking table --->
 </td></tr>
 </table>

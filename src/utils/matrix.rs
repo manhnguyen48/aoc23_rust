@@ -58,7 +58,6 @@ impl<T> Matrix<T> {
     }
 }
 
-
 // Indexing implementations to allow us getting the contents of the matrix by indexing it with a Point.
 // Will need bound checking before use.
 impl<T> Index<Point> for Matrix<T> {
