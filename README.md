@@ -5,6 +5,7 @@
 Solutions for [Advent of Code](https://adventofcode.com/) in [Rust](https://www.rust-lang.org/).
 
 First time learning Rust 🦀, so the code is probably not idiomatic.
+Benchmark done in WSL2 on AMD Ryzen 7 5800X with 32GB of RAM.
 
 <table>
 <tr><th>2023 Results</th><th>Benchmarks</th></tr> 
@@ -56,8 +57,9 @@ First time learning Rust 🦀, so the code is probably not idiomatic.
 | [Day 8](./src/bin/08.rs) | `22.2µs` | `41.7µs` |
 | [Day 9](./src/bin/09.rs) | `82.4µs` | `82.3µs` |
 | [Day 10](./src/bin/10.rs) | `57.7µs` | `64.5µs` |
+| [Day 11](./src/bin/11.rs) | `7.3µs` | `7.4µs` |
 
-**Total: 1.01ms**
+**Total: 1.02ms**
 <!--- benchmarking table --->
 </td></tr>
 </table>
