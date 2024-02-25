@@ -1,5 +1,5 @@
 advent_of_code::solution!(4);
-use advent_of_code::parse_unsigned;
+use advent_of_code::utils::parsing::parse_unsigned;
 
 // Parses input containing winners and players on each line, counting how
 // many players have winning numbers.

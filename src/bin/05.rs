@@ -1,5 +1,5 @@
 advent_of_code::solution!(5);
-use advent_of_code::parse_unsigned;
+use advent_of_code::utils::parsing::parse_unsigned;
 
 // Parses the input string into an Input struct.
 //

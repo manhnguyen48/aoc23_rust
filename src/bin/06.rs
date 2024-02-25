@@ -1,5 +1,5 @@
 advent_of_code::solution!(6);
-use advent_of_code::parse_unsigned;
+use advent_of_code::utils::parsing::parse_unsigned;
 
 // Solving the quadratic equation for the number of ways to win the race
 fn solve(times: &[f64], max_scores: &[f64]) -> f64 {
