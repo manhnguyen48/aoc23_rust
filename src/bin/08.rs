@@ -1,8 +1,7 @@
 advent_of_code::solution!(8);
-use std::collections::VecDeque;
-
 use advent_of_code::utils::math::lcm;
 use hashbrown::{HashMap, HashSet};
+use std::collections::VecDeque;
 
 fn parse_nodes(node_input: &str) -> HashMap<&str, (&str, &str)> {
     let mut nodes: HashMap<&str, (&str, &str)> = HashMap::new();
