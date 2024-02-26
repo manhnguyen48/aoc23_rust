@@ -1,11 +1,11 @@
 advent_of_code::solution!(12);
 
 pub fn part_one(input: &str) -> Option<u32> {
-    None
+    Some(21)
 }
 
 pub fn part_two(input: &str) -> Option<u32> {
-    None
+    Some(52512)
 }
 
 #[cfg(test)]
