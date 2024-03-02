@@ -1,5 +1,4 @@
 use advent_of_code::utils::parsing::parse_unsigned;
-// use hashbrown::HashMap;
 use fxhash::FxHashMap;
 use rayon::prelude::*;
 
@@ -16,6 +15,20 @@ impl Spring {
     }
 }
 
+/// This function counts the number of valid spring configurations based on a given `Spring` object.
+/// It uses a memoization technique with a hash map `memo` to avoid redundant calculations.
+///
+/// # Arguments
+///
+/// * `spring`: A reference to the `Spring` object containing configuration data.
+/// * `memo`: A mutable reference to a hash map storing previously calculated results.
+/// * `pos`: The current position in the spring sequence.
+/// * `block`: The current accumulated block size.
+/// * `sequences`: The number of completed sequences so far.
+///
+/// # Returns
+///
+/// The number of valid spring configurations starting from the current position.
 fn count(
     spring: &Spring,
     memo: &mut FxHashMap<(usize, usize, usize), usize>,
