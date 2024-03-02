@@ -1,10 +1,10 @@
 advent_of_code::solution!(8);
 use advent_of_code::utils::math::lcm;
-use hashbrown::{HashMap, HashSet};
+use fxhash::{FxHashMap, FxHashSet};
 use std::collections::VecDeque;
 
-fn parse_nodes(node_input: &str) -> HashMap<&str, (&str, &str)> {
-    let mut nodes: HashMap<&str, (&str, &str)> = HashMap::new();
+fn parse_nodes(node_input: &str) -> FxHashMap<&str, (&str, &str)> {
+    let mut nodes: FxHashMap<&str, (&str, &str)> = FxHashMap::default();
     for line in node_input.lines() {
         nodes.insert(&line[0..3], (&line[7..10], &line[12..15]));
     }
@@ -16,7 +16,7 @@ pub fn part_one(input: &str) -> Option<usize> {
     let nodes = parse_nodes(nodes);
 
     let mut queue: VecDeque<(&str, usize)> = VecDeque::new();
-    let mut visited: HashSet<&str> = HashSet::new();
+    let mut visited: FxHashSet<&str> = FxHashSet::default();
     let mut step_counts: usize = 0;
     let start = "AAA";
     // There are 6 nodes ending with A and we're going through each of them
@@ -46,7 +46,7 @@ pub fn part_two(input: &str) -> Option<usize> {
     let nodes = parse_nodes(nodes);
 
     let mut queue: VecDeque<(&str, usize)> = VecDeque::new();
-    let mut visited: HashSet<&str> = HashSet::new();
+    let mut visited: FxHashSet<&str> = FxHashSet::default();
     // Vector to store the cycle lengths for each ghost to see Z node again
     let mut cycle_lengths: Vec<usize> = Vec::new();
     // There are 6 nodes ending with A and we're going through each of them

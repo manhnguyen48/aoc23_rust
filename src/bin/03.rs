@@ -1,5 +1,5 @@
 advent_of_code::solution!(3);
-use hashbrown::HashSet;
+use fxhash::FxHashSet;
 
 /// Looks around the given position in the `lines` 2D array to find all
 /// adjacent digits, storing their coordinates in a `Vec`. It will scan
@@ -34,7 +34,7 @@ fn look_around(lines: &[&[u8]], i: usize, j: usize) -> Option<Vec<(usize, usize)
 /// Converts the numbers at the given coordinates in the lines to a vector of u32 values.
 /// Iterates through the coordinates, gets the line for each, and parses the number at that point,
 /// converting it to a u32 and collecting into a vector.
-fn convert_number(coords: &HashSet<(usize, usize)>, lines: &[&[u8]]) -> Vec<u32> {
+fn convert_number(coords: &FxHashSet<(usize, usize)>, lines: &[&[u8]]) -> Vec<u32> {
     let numbers = coords
         .iter()
         .map(|(i, j)| {
@@ -51,7 +51,7 @@ fn convert_number(coords: &HashSet<(usize, usize)>, lines: &[&[u8]]) -> Vec<u32>
 
 pub fn part_one(input: &str) -> Option<u32> {
     let lines: Vec<&[u8]> = input.lines().map(|l| l.as_bytes()).collect();
-    let mut number_coords: HashSet<(usize, usize)> = HashSet::new();
+    let mut number_coords: FxHashSet<(usize, usize)> = FxHashSet::default();
     // Iterates through each line and character in the input, checking if the
     // character is not a dot or digit. If so, it calls look_around() to get
     // adjacent coordinates and adds them to the numbers HashSet. This populates
@@ -71,7 +71,7 @@ pub fn part_one(input: &str) -> Option<u32> {
 pub fn part_two(input: &str) -> Option<u32> {
     let lines: Vec<&[u8]> = input.lines().map(|l| l.as_bytes()).collect();
     let mut result: u32 = 0;
-    let mut gear_pairs: HashSet<(usize, usize)> = HashSet::new();
+    let mut gear_pairs: FxHashSet<(usize, usize)> = FxHashSet::default();
     // We only need to stop for the star symbol now
     lines.iter().enumerate().for_each(|(i, line)| {
         line.iter().enumerate().for_each(|(j, &b)| {
