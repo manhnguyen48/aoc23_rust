@@ -59,8 +59,9 @@ Benchmark done in WSL2 on AMD Ryzen 7 5800X with 32GB of RAM.
 | [Day 10](./src/bin/10.rs) | `57.7µs` | `64.5µs` |
 | [Day 11](./src/bin/11.rs) | `7.3µs` | `7.4µs` |
 | [Day 12](./src/bin/12.rs) | `2.3ms` | `5.4ms` |
+| [Day 13](./src/bin/13.rs) | `79.4µs` | `79.4µs` |
 
-**Total: 8.72ms**
+**Total: 8.88ms**
 <!--- benchmarking table --->
 </td></tr>
 </table>
